@@ -2,15 +2,17 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="<?php bloginfo('charset');?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head();?>
 </head>
 
-<body>
-    <!-- bloginfo() - a function that grabs the details of the wordpress website. see: https://developer.wordpress.org/reference/functions/bloginfo/ for more info on bloginfo() -->
 
+<body <?php body_class(); ?>>
+    <!-- body_class() - wordpress function that give the body tag class names relative to our wordpress page attributes. -->
+
+    <!-- bloginfo() - a function that grabs the details of the wordpress website. see: https://developer.wordpress.org/reference/functions/bloginfo/ for more info on bloginfo() -->
     <!-- bloginfo('name') - grabs the site's title -->
     <!-- <h1><?php //bloginfo('name');?></h1> -->
 

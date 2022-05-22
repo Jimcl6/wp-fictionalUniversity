@@ -12,6 +12,12 @@
                 <div class="site-footer__col-two">
                     <h3 class="headline headline--small">Explore</h3>
                     <nav class="nav-list">
+                        <?php 
+                            // code for dynamic wordpress menu footer
+                            // wp_nav_menu(array(
+                            //     'theme_location' => 'footerMenuLocationExplore'
+                            // ));
+                        ?>
                         <ul>
                             <li><a href="<?php echo site_url('/about-us');?>">About Us</a></li>
                             <li><a href="<?php echo site_url('/');?>">Programs</a></li>
@@ -24,10 +30,16 @@
                 <div class="site-footer__col-three">
                     <h3 class="headline headline--small">Learn</h3>
                     <nav class="nav-list">
+                        <?php 
+                            // code for dynamic wordpress menu footer
+                            // wp_nav_menu(array(
+                            //     'theme_location' => 'footerMenuLocationLearn'
+                            // ));
+                        ?>
                         <ul>
-                            <li><a href="<?php echo site_url('')?>">Legal</a></li>
+                            <li><a href="<?php echo site_url('/')?>">Legal</a></li>
                             <li><a href="<?php echo site_url('/privacy-policy')?>">Privacy</a></li>
-                            <li><a href="<?php echo site_url('')?>">Careers</a></li>
+                            <li><a href="<?php echo site_url('/')?>">Careers</a></li>
                         </ul>
                     </nav>
                 </div>

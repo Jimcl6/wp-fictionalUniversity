@@ -41,13 +41,14 @@
                             <a href="<?php echo site_url('/about-us'); ?>">About Us</a>
                         </li>
                         <li <?php if(is_page('')) echo 'class="curent-menu-item"';?>><a
-                                href="<?php echo site_url('/'); ?>">Programs</a></li>
+                                href="<?= site_url('/'); ?>">Programs</a></li>
                         <li <?php if(is_page('')) echo 'class="curent-menu-item"';?>><a
-                                href="<?php echo site_url('/'); ?>">Events</a></li>
+                                href="<?= site_url('/'); ?>">Events</a></li>
                         <li <?php if(is_page('')) echo 'class="curent-menu-item"';?>><a
-                                href="<?php echo site_url('/'); ?>">Campuses</a></li>
-                        <li <?php if(is_page('')) echo 'class="curent-menu-item"';?>><a
-                                href="<?php echo site_url('/'); ?>">Blog</a></li>
+                                href="<?= site_url('/'); ?>">Campuses</a></li>
+                        <!-- get_post_type() -->
+                        <li <?php if(get_post_type() == 'post') echo 'class="current-menu-item"';?>><a
+                                href="<?= site_url('/blog'); ?>">Blog</a></li>
                     </ul>
                 </nav>
                 <div class="site-header__util">

@@ -1,8 +1,10 @@
 <?php 
-    get_header(); 
+    get_header();
+    
 ?>
 
 <div class="page-banner">
+    <!-- get_theme_file_uri() - this grabs the url link and add the file name and location as the argument of the get_theme_uri() function -->
     <div class="page-banner__bg-image"
         style="background-image: url(<?= get_theme_file_uri('/images/library-hero.jpg')?>)"></div>
     <div class="page-banner__content container t-center c-white">
@@ -19,6 +21,11 @@
         <div class="full-width-split__inner">
             <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
 
+            <!-- php wordpress custom query -->
+            <?php 
+                $homepageEvents = new WP_Query();
+            ?>
+            <!-- end of wordpress custom query -->
             <div class="event-summary">
                 <a class="event-summary__date t-center" href="#">
                     <span class="event-summary__month">Mar</span>
@@ -49,7 +56,39 @@
         <div class="full-width-split__inner">
             <h2 class="headline headline--small-plus t-center">From Our Blogs</h2>
 
+            <!-- custom wordpress query -->
+            <?php 
+                // creation of custom wordpress query.
+                // to create a custom WP query enter the following code. $variableName = new WP_Query();
+                // for more information and reference to paramaters we can use for WP_Query(array()) see: https://developer.wordpress.org/reference/classes/wp_query/
+                $homepagePosts = new WP_Query(array(
+                    'posts_per_page' => 2,
+                ));
+
+                // 
+                while ($homepagePosts -> have_posts()) {
+                    $homepagePosts -> the_post();
+            ?>
+            <!-- end of custom wordpress query -->
             <div class="event-summary">
+                <a class="event-summary__date event-summary__date--beige t-center" href="<?php the_permalink();?>">
+                    <span class="event-summary__month"><?php the_time('F')?></span>
+                    <span class="event-summary__day"><?php the_time('d')?></span>
+                </a>
+                <div class="event-summary__content">
+                    <h5 class="event-summary__title headline headline--tiny"><a
+                            href="<?php the_permalink(); ?>"><?php the_title();?></a>
+                    </h5>
+                    <p><?= wp_trim_words(get_the_content(), 18) ?> <a href="<?php the_permalink(); ?>"
+                            class="nu gray">Read more</a></p>
+                </div>
+            </div>
+            <?php
+                }
+                // this will the custom Wordpress query back to the default automatic wordpress query.
+                wp_reset_postdata();
+            ?>
+            <!-- <div class="event-summary">
                 <a class="event-summary__date event-summary__date--beige t-center" href="#">
                     <span class="event-summary__month">Jan</span>
                     <span class="event-summary__day">20</span>
@@ -71,9 +110,10 @@
                     <p>Two of our professors have been in national news lately. <a href="#" class="nu gray">Read
                             more</a></p>
                 </div>
-            </div>
+            </div> -->
 
-            <p class="t-center no-margin"><a href="#" class="btn btn--yellow">View All Blog Posts</a></p>
+            <p class="t-center no-margin"><a href="<?= site_url('/blog')?>" class="btn btn--yellow">View All Blog
+                    Posts</a></p>
         </div>
     </div>
 </div>

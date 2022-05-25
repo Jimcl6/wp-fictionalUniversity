@@ -62,10 +62,10 @@
                 }
                 wp_list_pages(array(
                     // 'title_li - is connected to the parent page's/post's title page/post.
-                    'title_li' => NULL,
-                    'child_of' => $findChildrenOf,
+                    'title_li'      => NULL,
+                    'child_of'      => $findChildrenOf,
                     // 'sort_column' => 'menu_order' - this is to sort the menus according to the order we want it to.
-                    'sort_column' => 'menu_order'
+                    'sort_column'   => 'menu_order'
                 ));
             ?>
         </ul>

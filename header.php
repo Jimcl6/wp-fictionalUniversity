@@ -42,8 +42,8 @@
                         </li>
                         <li <?php if(is_page('')) echo 'class="curent-menu-item"';?>><a
                                 href="<?= site_url('/'); ?>">Programs</a></li>
-                        <li <?php if(is_page('')) echo 'class="curent-menu-item"';?>><a
-                                href="<?= site_url('/'); ?>">Events</a></li>
+                        <li <?php if(get_post_type() == 'events') echo 'class="current-menu-item"';?>><a
+                                href="<?= site_url('/events'); ?>">Events</a></li>
                         <li <?php if(is_page('')) echo 'class="curent-menu-item"';?>><a
                                 href="<?= site_url('/'); ?>">Campuses</a></li>
                         <!-- get_post_type() -->

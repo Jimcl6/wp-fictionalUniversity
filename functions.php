@@ -23,6 +23,7 @@ function university_features() {
     // add_theme_support() - Registers theme support for a given feature. see: https://developer.wordpress.org/reference/functions/add_theme_support/ for more information
         // title_tag - This feature enables plugins and themes to manage the document title tag. This should be used in place of wp_title() function.
     add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
 }
 
 add_action('after_setup_theme', 'university_features');

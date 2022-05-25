@@ -6,10 +6,10 @@
     </div>
     <div class="page-banner__content container container--narrow">
         <h1 class="page-banner__title">
-            All Events
+            Past Events
         </h1>
         <div class="page-banner__intro">
-            <p>See what is going on in our world.</p>
+            <p>Recap of our past events.</p>
         </div>
     </div>
 </div>
@@ -19,11 +19,33 @@
 <div class="container container--narrow page-section">
     <!-- to grab our wordpress post listing start off with the wordpress loop. see below for an example. -->
 
-    <?php 
+    <?php
+    
+        // custom query code for past Events page
+        $today = date('Ymd');
+        $pastEvents = new WP_Query(array(
+            // 'paged'        => get_query_var('paged', 1), - this grabs the page number from the pagination of our custom query.
+            'paged'           => get_query_var('paged', 1),
+            'post_type'       => 'events',
+            'met_key'         => 'event_date',
+            'orderby'         => 'meta_value_num',
+            'order'           => 'ASC',
+            'meta_query'      =>  array(
+                array(
+                    'key'       => 'event_date',
+                    // when grabbing date from past events in the 'compare' parameter assign the lesser than symbol(<).
+                    'compare'   => "<",
+                    'value'     => $today,
+                    'type'      => 'numeric'
+                )
+            )
+        ));
+        // end of custom query code for past Events page
+
         // start off with the while loop. while(have_posts()) {
-        while (have_posts()) {
-            // the_post() - this should echo out the posts from our wordpress posts/page admin panel.
-            the_post();
+        while ($pastEvents->have_posts()) {
+            // $pastEvents->the_post() - this should echo out the posts from our wordpress posts/page admin panel.
+            $pastEvents->the_post();
     ?>
     <div class="event-summary">
         <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
@@ -49,15 +71,11 @@
     </div>
     <?php
         }
-        echo paginate_links();
+        echo paginate_links(array(
+            'total' => $pastEvents->max_num_pages
+        ));
     ?>
-    <hr class="section-break">
-    <p>Looking for a recap of past Events? <a href="<?= site_url('/past-events')?>">Check out our past events
-            archive</a>
-    </p>
 </div>
-
-
 <!-- end of content section -->
 
 <?php get_footer();?>

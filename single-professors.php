@@ -36,7 +36,11 @@
         <div class="generic-content">
             <div class="row group">
                 <div class="one-third">
-                    <?php the_post_thumbnail();?>
+                    <?php
+                    // in order to for us to use the image size we added in our functions.php follow format below:
+                    // the_post_thumbnail('professorPortrait'); 
+                    the_post_thumbnail('professorPortrait'); 
+                    ?>
                 </div>
                 <div class="two-thirds">
                     <?php the_content();?>

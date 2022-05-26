@@ -25,6 +25,8 @@ function university_features() {
         // title-tag - This feature enables plugins and themes to manage the document title tag. This should be used in place of wp_title() function.
         
     add_theme_support('title-tag');
+
+    // add_theme_support('post-thumbnails') - this allows us to enable the featured image feature on our wordpress post types.
     add_theme_support('post-thumbnails');
     // add_image_size() - this allows us to enable wordpress image sizing
     // format: add_image_size('name', width(int), heigh(int), bool);

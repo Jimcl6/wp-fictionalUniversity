@@ -22,7 +22,7 @@
         <div class="page-banner__content container container--narrow">
             <h1 class="page-banner__title"><?php the_title();?></h1>
             <div class="page-banner__intro">
-                <p><?php the_archive_description();?></p>
+                <p>DONT FORGET TO REPLACE ME LATER</p>
             </div>
         </div>
     </div>
@@ -32,22 +32,16 @@
 <!-- content section -->
 <section id="content-section">
     <div class="container container--narrow page-section">
-        <!-- meta box section -->
-        <div class="metabox metabox--position-up metabox--with-home-link">
-            <p>
-                <!-- get_permalink() - gets the permalink of the current page/post -->
-                <a class="metabox__blog-home-link" href="<?= get_post_type_archive_link('events')?>"><i
-                        class="fa fa-home" aria-hidden="true"></i> Events Home</a>
-                <!-- get_the_title() - gets title of the current page/post -->
 
-                <!-- the the_author_posts_link(); - this grabs the author of the wordpress post.-->
-                <!-- the_time() - grabs when the time/date of the wordpress post was published, in order to apply a better format for date and time of wordpress post please see: https://wordpress.org/support/article/formatting-date-and-time/ for more information -->
-                <span class="metabox__main"><?php the_title();?></span>
-            </p>
-        </div>
-        <!-- end of meta box section -->
         <div class="generic-content">
-            <?php the_content();?>
+            <div class="row group">
+                <div class="one-third">
+                    <?php the_post_thumbnail();?>
+                </div>
+                <div class="two-thirds">
+                    <?php the_content();?>
+                </div>
+            </div>
         </div>
 
         <?php 
@@ -55,7 +49,7 @@
 
         if($relatedPrograms) {
             echo '<hr class="section-break">';
-        echo '<h2 class="headline headline--medium">Related Program(s)</h2>';
+        echo '<h2 class="headline headline--medium">Subject(s) Taught</h2>';
         echo '<ul class="link-list min-list">';
         foreach($relatedPrograms as $programs) {
         ?>

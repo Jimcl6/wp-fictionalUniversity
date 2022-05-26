@@ -21,15 +21,31 @@ function university_features() {
     // register_nav_menu( 'footerMenuLocationLearn', 'Footer Menu Location Learn' );
 
     // add_theme_support() - Registers theme support for a given feature. see: https://developer.wordpress.org/reference/functions/add_theme_support/ for more information
+    // format: add_theme_support(wp_parameter);
         // title-tag - This feature enables plugins and themes to manage the document title tag. This should be used in place of wp_title() function.
+        
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
+    // add_image_size() - this allows us to enable wordpress image sizing
+    // format: add_image_size('name', width(int), heigh(int), bool);
+    add_image_size('professorLandscape', 400, 260, true);
+    add_image_size('professorPortrait', 480, 650, true);
 }
 
 add_action('after_setup_theme', 'university_features');
 
 
 function university_adjust_queries($query) {
+
+    // Programs
+    if(!is_admin() AND is_post_type_archive('programs') AND $query->is_main_query()) {
+        $query  ->  set('posts_per_page', -1);
+        $query  ->  set('orderby', 'title');
+        $query  ->  set('order', 'ASC');
+    }
+    
+
+    // Events
     $today = date('Ymd');
     if(!is_admin() AND is_post_type_archive('events') AND $query->is_main_query()) {
         $query  ->  set('metakey', 'event_date');
@@ -44,5 +60,6 @@ function university_adjust_queries($query) {
             )
         ));
     }
+    
 }
 add_action('pre_get_posts','university_adjust_queries');

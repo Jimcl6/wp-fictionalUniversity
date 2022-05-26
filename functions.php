@@ -36,22 +36,16 @@ add_action('after_setup_theme', 'university_features');
 
 
 function university_adjust_queries($query) {
-<<<<<<< HEAD
 
     // Programs
-=======
->>>>>>> f0e722841efa2bc275f6850bb487b93ac193a879
     if(!is_admin() AND is_post_type_archive('programs') AND $query->is_main_query()) {
         $query  ->  set('posts_per_page', -1);
         $query  ->  set('orderby', 'title');
         $query  ->  set('order', 'ASC');
     }
     
-<<<<<<< HEAD
 
     // Events
-=======
->>>>>>> f0e722841efa2bc275f6850bb487b93ac193a879
     $today = date('Ymd');
     if(!is_admin() AND is_post_type_archive('events') AND $query->is_main_query()) {
         $query  ->  set('metakey', 'event_date');

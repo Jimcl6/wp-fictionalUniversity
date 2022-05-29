@@ -1,5 +1,42 @@
 <?php
 
+// pageBanner function - best to be used on for website's page banner.
+function pageBanner($args) {
+    $pageBannerImage = get_field('page_banner_background_image'); 
+    if(!$args['title']) {
+       $args['title'] = get_the_title();
+    }
+
+    if(!$args['subtitle']) {
+        $args['subtitle'] = get_field('page_banner_subtitle');
+    }
+
+    if(!$args['photo']) {
+        if(get_field('page_banner_background_image')) {
+            $args['photo'] = get_field('page_banner_background_image')['sizes']['pageBanner'];
+        } else {
+            $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
+        }
+    }
+?>
+<div class="page-banner">
+    <div class="page-banner__bg-image" style="background-image: url(<?= $args['photo'];?>)">
+    </div>
+    <div class="page-banner__content container container--narrow">
+        <h1 class="page-banner__title"><?= $args['title'];?></h1>
+        <div class="page-banner__intro">
+            <p>
+                <?=
+                   $args['subtitle'] ;
+                ?>
+            </p>
+        </div>
+    </div>
+</div>
+<?php 
+}
+// end of pageBanner function
+
 function university_files() {
  
     wp_enqueue_script('main-university-javascript', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);
@@ -32,6 +69,7 @@ function university_features() {
     // format: add_image_size('name', width(int), heigh(int), bool);
     add_image_size('professorLandscape', 400, 260, true);
     add_image_size('professorPortrait', 480, 650, true);
+    add_image_size('pageBanner', 1500, 350, true);
 }
 
 add_action('after_setup_theme', 'university_features');

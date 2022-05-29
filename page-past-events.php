@@ -1,18 +1,8 @@
 <?php get_header();?>
 
 <!-- banner section -->
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?= get_theme_file_uri('/images/ocean.jpg')?>)">
-    </div>
-    <div class="page-banner__content container container--narrow">
-        <h1 class="page-banner__title">
-            Past Events
-        </h1>
-        <div class="page-banner__intro">
-            <p>Recap of our past events.</p>
-        </div>
-    </div>
-</div>
+<?php pageBanner(array(
+));?>
 <!-- end of banner section -->
 
 <!-- content section -->
@@ -27,7 +17,7 @@
             // 'paged'        => get_query_var('paged', 1), - this grabs the page number from the pagination of our custom query.
             'paged'           => get_query_var('paged', 1),
             'post_type'       => 'events',
-            'meta_key'         => 'event_date',
+            'meta_key'        => 'event_date',
             'orderby'         => 'meta_value_num',
             'order'           => 'ASC',
             'meta_query'      =>  array(

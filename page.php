@@ -6,16 +6,14 @@
         the_post();
 ?>
 
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?= get_theme_file_uri('/images/ocean.jpg')?>)">
-    </div>
-    <div class="page-banner__content container container--narrow">
-        <h1 class="page-banner__title"><?php the_title();?></h1>
-        <div class="page-banner__intro">
-            <p><?php bloginfo('description')?></p>
-        </div>
-    </div>
-</div>
+
+<!-- insert php function code of pageBanner($args) here -->
+<?php
+pageBanner(array(
+    // 'photo'         => 'https://images.unsplash.com/photo-1525784451128-d1488f52f03e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80'
+));
+?>
+<!-- end of php function code of pageBanner($args) -->
 
 <div class="container container--narrow page-section">
     <?php

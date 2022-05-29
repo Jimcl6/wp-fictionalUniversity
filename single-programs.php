@@ -15,18 +15,7 @@
 <!-- the_content() wordpress function that grabs the content of posts. -->
 
 <!-- banner section -->
-<section id="banner-section">
-    <div class="page-banner">
-        <div class="page-banner__bg-image" style="background-image: url(<?= get_theme_file_uri('/images/ocean.jpg')?>)">
-        </div>
-        <div class="page-banner__content container container--narrow">
-            <h1 class="page-banner__title"><?php the_title();?></h1>
-            <div class="page-banner__intro">
-                <p><?php the_archive_description();?></p>
-            </div>
-        </div>
-    </div>
-</section>
+<?php pageBanner(array());?>
 <!-- end of banner section -->
 
 <!-- content section -->
